@@ -1,0 +1,12 @@
+#btn:hover {
+  box-shadow:
+    #b469ff 0px 0px 25px 0px,
+    #b469ff 0px 0px 0px 1px;
+}
+
+@media (max-width: 768px) {
+  button {
+    width: 13rem;
+    height: 3.5rem;
+  }
+}
