@@ -5,7 +5,7 @@ import { useCreateNewPropertyMutation } from "../redux/features/propertyApi";
 import { toast } from "react-toastify";
 
 const CreateProperty = () => {
-  const [newPropertyUpload, { isLoading }] = useCreateNewPropertyMutation();
+  const [newPropertyMutation, { isLoading }] = useCreateNewPropertyMutation();
   const inputFile1 = useRef();
   const inputFile2 = useRef();
 
@@ -68,7 +68,7 @@ const CreateProperty = () => {
       formData.append("features", JSON.stringify(newPropertyData.features));
       formData.append("isAvailable", newPropertyData.isAvailable);
 
-      const response = await newPropertyUpload(formData).unwrap();
+      const response = await newPropertyMutation(formData).unwrap();
       console.log(response);
       console.log("Upload response:", response);
       if (response.success) {

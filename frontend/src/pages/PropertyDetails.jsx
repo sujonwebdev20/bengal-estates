@@ -14,6 +14,7 @@ import DetailsPageImageSlider from "../components/DetailsPageImageSlider";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import SuggestedProperty from "../components/SuggestedProperty";
 // import { FaBookmark } from "react-icons/fa6";
 
 const PropertyDetails = () => {
@@ -148,6 +149,7 @@ const PropertyDetails = () => {
               className="bg-transparent w-full outline-none resize-none font-inter text-gray-300"
             ></textarea>
           </div>
+          <SuggestedProperty />
         </>
       )}
     </Container>

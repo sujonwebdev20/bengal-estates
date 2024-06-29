@@ -39,7 +39,7 @@ const SignIn = () => {
           onSubmit={handleSubmit}
           className="flex flex-col items-center gap-3 font-inter text-lg"
         >
-          <img className="h-11 mb-4" src="/images/logo.png" alt="Brand" />
+          <img className="h-11 mb-4" src="/images/logo.svg" alt="Brand" />
           <input
             onChange={(e) =>
               setUserData({

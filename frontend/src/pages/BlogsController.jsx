@@ -23,9 +23,9 @@ const BlogsController = () => {
       if (window.confirm("Are you sure you want to delete")) {
         const response = await deleteBlogByIdMutation(id).unwrap();
         refetch();
-        setBlogs(blogs.filter((property) => property._id !== id));
+        setBlogs(blogs.filter((blog) => blog._id !== id));
         if (response) {
-          toast.error("Blog deleted successfully");
+          toast.success("Blog deleted successfully");
         }
       }
     } catch (error) {

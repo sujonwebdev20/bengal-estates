@@ -8,6 +8,8 @@ import errorHandler from "./src/middlewares/errorHandlerMiddleware.js";
 import propertyRoute from "./src/routes/propertyRoute.js";
 import blogRoute from "./src/routes/blogRoute.js";
 import { v2 as cloudinary } from "cloudinary";
+import generalEnquiryRoute from "./src/routes/generalEnquiryRoute.js";
+import contactRoute from "./src/routes/contactRoute.js";
 
 // Configuration
 dotenv.config();
@@ -34,6 +36,8 @@ app.use(
 app.use("/api", authRoute);
 app.use("/api", propertyRoute);
 app.use("/api", blogRoute);
+app.use("/api", generalEnquiryRoute);
+app.use("/api", contactRoute);
 
 // Error handler middleware
 app.use(errorHandler);

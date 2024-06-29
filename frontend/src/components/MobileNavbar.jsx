@@ -1,15 +1,44 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import "../css/Navbar.css";
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { MobileNavbarContext } from "../../contexts/MobileNavbarContext";
 import Button from "./Button";
+import { useDispatch, useSelector } from "react-redux";
+import { jwtDecode } from "jwt-decode";
+import { signout } from "../redux/features/auth/authSlice";
+import { useSignoutMutation } from "../redux/features/auth/authApi";
+import { toast } from "react-toastify";
 
 const MobileNavbar = () => {
   const mainNavMenuRef = useRef();
   const dropDownMenuRef = useRef();
+  const { token } = useSelector((state) => state.auth);
+  const signinUser = useSelector((state) => state.auth);
+  const [signoutMutation] = useSignoutMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const signoutHandle = async () => {
+    const response = await signoutMutation();
+    console.log(response);
+    if (response.data.success) {
+      toast.success(response.data.message);
+    }
+
+    if (response.data.success) {
+      dispatch(signout(response));
+      return navigate("/");
+    }
+  };
+
+  let decodedToken = null;
+  if (token) {
+    const jwtToken = jwtDecode(token);
+    decodedToken = jwtToken;
+  }
 
   const [isDropDownMenuShow, setIsDropDownMenuShow] = useState(false);
   const [, setMobileNavActive] = useContext(MobileNavbarContext);
@@ -31,6 +60,10 @@ const MobileNavbar = () => {
       { width: "50%", duration: 0.5 }
     );
   });
+
+  if (window.innerWidth > 1080) {
+    setMobileNavActive(false);
+  }
 
   return (
     <>
@@ -65,7 +98,7 @@ const MobileNavbar = () => {
             <NavLink
               onClick={() => setMobileNavActive(false)}
               style={handleActiveLink}
-              to="/property"
+              to="/property/all"
               className="text-base"
             >
               property
@@ -75,12 +108,24 @@ const MobileNavbar = () => {
             <NavLink
               onClick={() => setMobileNavActive(false)}
               style={handleActiveLink}
-              to="/blog"
+              to="/blog/all"
               className="text-base"
             >
               blog
             </NavLink>
           </li>
+          {token && decodedToken.role === "admin" && (
+            <li>
+              <NavLink
+                onClick={() => setMobileNavActive(false)}
+                style={handleActiveLink}
+                to="/admin"
+                className="text-base"
+              >
+                admin
+              </NavLink>
+            </li>
+          )}
           <li
             style={{ transition: "ease-in-out" }}
             className="drop_down cursor-pointer"
@@ -92,22 +137,22 @@ const MobileNavbar = () => {
               className={`mbl_drop_down_menu pl-6 bg-dark_trans_purple rounded-md font-inter text-base overflow-hidden transition-all duration-500 ease-in-out ${isDropDownMenuShow ? "max-h-max" : "h-0"}`}
             >
               <ul className="flex flex-col gap-y-5 [&>li:last-child]:pb-4">
-                <li onClick={() => setMobileNavActive(false)}>
+                <li onClick={() => setMobileNavActive(false)} className="ml-4">
                   <NavLink to="/overview">overview</NavLink>
                 </li>
-                <li onClick={() => setMobileNavActive(false)}>
+                <li onClick={() => setMobileNavActive(false)} className="ml-4">
                   <NavLink to="/challenge">challenge</NavLink>
                 </li>
-                <li onClick={() => setMobileNavActive(false)}>
+                <li onClick={() => setMobileNavActive(false)} className="ml-4">
                   <NavLink to="/why_bengal_estates">why bengal estates</NavLink>
                 </li>
-                <li onClick={() => setMobileNavActive(false)}>
+                <li onClick={() => setMobileNavActive(false)} className="ml-4">
                   <NavLink to="/value">value</NavLink>
                 </li>
-                <li onClick={() => setMobileNavActive(false)}>
+                <li onClick={() => setMobileNavActive(false)} className="ml-4">
                   <NavLink to="/investment">investment</NavLink>
                 </li>
-                <li onClick={() => setMobileNavActive(false)}>
+                <li onClick={() => setMobileNavActive(false)} className="ml-4">
                   <NavLink to="/faq">faq</NavLink>
                 </li>
               </ul>
@@ -123,13 +168,20 @@ const MobileNavbar = () => {
               tenant portal
             </NavLink>
           </li>
-          <NavLink
-            to="/signin"
-            onClick={() => setMobileNavActive(false)}
-            className="mt-6 flex justify-center"
-          >
-            <Button title={"sign in"} width={"7rem"} height={"2.3rem"} />
-          </NavLink>
+          <div className="w-full flex justify-center items-center gap-8 mt-5">
+            {signinUser && signinUser.token ? (
+              <Button
+                width={"7rem"}
+                height={"2.3rem"}
+                title={"signout"}
+                clickHandle={signoutHandle}
+              />
+            ) : (
+              <Link to="/signin">
+                <Button width={"7rem"} height={"2.3rem"} title={"sign in"} />
+              </Link>
+            )}
+          </div>
         </ul>
       </div>
     </>

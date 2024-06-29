@@ -9,10 +9,10 @@ const Footer = () => {
   return (
     <footer className="w-full border-t-[3px] border-light_purple pb-2 mt-auto">
       <Container>
-        <div className="w-full flex lg:flex-row max-lg:flex-col lg:px-0 lg:gap-20 min-[320px]:gap-10 pt-3 pb-3 justify-between items-center text-[#dadada] min-[320px]:px-5">
+        <div className="w-full flex max-md:flex-col lg:px-0 lg:gap-20 min-[320px]:gap-10 pt-3 pb-3 justify-between items-start max-md:items-center text-[#dadada] min-[320px]:px-5">
           <div className=" flex-grow ">
             <div className="max-lg:flex justify-center mb-3 mt-5">
-              <img className="w-24" src="/images/logo2.svg" alt="Brand" />
+              <img className="w-24" src="/images/logo.svg" alt="Brand" />
             </div>
             <p className="font-inter text-base lg:text-start min-[320px]:text-center">
               Our mission is to find a quality rental solution you are looking

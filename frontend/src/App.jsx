@@ -34,6 +34,10 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Favorite from "./pages/Favorite";
 import CheckAdminUser from "./Layout/CheckAdminUser";
+import Partnership from "./pages/Partnership";
+import EnquiryMessageController from "./pages/EnquiryMessageController";
+import GeneralEnquiry from "./pages/GeneralEnquiry";
+import ContactMessageController from "./pages/ContactMessageController";
 
 const App = () => {
   const [mobileNavActive, setMobileNavActive] = useState(false);
@@ -62,6 +66,7 @@ const App = () => {
               <Route path="investment" element={<Investment />} />
               <Route path="tenant_portal" element={<TenantPortal />} />
               <Route path="faq" element={<Faq />} />
+              <Route path="partnership" element={<Partnership />} />
               {/*******************
                * PROTECTED ROUTES *
                ********************/}
@@ -82,11 +87,20 @@ const App = () => {
                 <Route path="admin/blog/create" element={<CreateBlog />} />
                 <Route path="admin/blog/all" element={<BlogsController />} />
                 <Route path="admin/blog/edit/:id" element={<EditBlog />} />
+                <Route
+                  path="admin/contact_messages"
+                  element={<ContactMessageController />}
+                />
+                <Route
+                  path="admin/enquiry_messages"
+                  element={<EnquiryMessageController />}
+                />
               </Route>
 
               <Route element={<CheckSignin />}>
                 <Route path="profile" element={<Profile />} />
                 <Route path="profile/favorites" element={<Favorite />} />
+                <Route path="general_enquiry" element={<GeneralEnquiry />} />
               </Route>
             </Route>
             {/************************

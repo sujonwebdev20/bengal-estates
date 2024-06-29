@@ -1,7 +1,7 @@
 import Container from "../components/Container";
 import ShortDetailHouses from "../components/ShortDetailHouses";
 import { FaPlay } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Modal from "../components/Modal";
 import "../css/Home.css";
 import ImageSlider from "../components/ImageSlider";
@@ -11,6 +11,7 @@ import OurTeamCard from "../components/OurTeamCard";
 import About from "../components/About";
 import Button from "../components/Button";
 import { useGetAllPropertiesQuery } from "../redux/features/propertyApi";
+import Contact from "./Contact";
 
 const Home = () => {
   const [isShow, setIsShow] = useState(null);
@@ -55,7 +56,17 @@ const Home = () => {
               <FaPlay className="text-[#656565] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:ml-2 sm:text-8xl min-[320px]:text-5xl min-[320px]:ml-1" />
             </div>
           </div>
-          <Modal isShow={isShow} setIsShow={setIsShow} />
+          <Modal isShow={isShow} setIsShow={setIsShow}>
+            <iframe
+              className="fixed z-[99] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[40rem]"
+              src="https://www.youtube.com/embed/1EqsKq4dzYk?si=JgDO9BU_37IZ2QO3"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          </Modal>
         </section>
       </Container>
       <OurTeamCard />
@@ -75,28 +86,7 @@ const Home = () => {
               paramount. That's why we've made these commitments to you`}
             </p>
           </div> */}
-
-          <form className="w-[50%] max-sm:w-full h-[21rem] flex flex-col justify-center lg:gap-6 max-lg:gap-4">
-            <input
-              className="w-full px-5 py-2 rounded-lg bg-dark_trans_purple border-2 border-transparent focus:border-2 focus:border-light_purple outline-none placeholder:text-gray-300"
-              type="text"
-              name="name"
-              placeholder="Name"
-            />
-            <input
-              className="w-full px-5 py-2 rounded-lg bg-dark_trans_purple border-2 border-transparent focus:border-2 focus:border-light_purple outline-none placeholder:text-gray-300"
-              type="email"
-              name="email"
-              placeholder="Email"
-            />
-            <textarea
-              className="w-full px-5 py-2 rounded-lg bg-dark_trans_purple border-2 border-transparent focus:border-2 focus:border-light_purple outline-none placeholder:text-gray-300 resize-none"
-              name="message"
-              placeholder="Message"
-              rows="5"
-            ></textarea>
-            <Button title={"send"} width={"8rem"} height={"2.4rem"} />
-          </form>
+          <Contact />
 
           <div className="w-[50%] max-sm:w-full h-[21rem]">
             <iframe

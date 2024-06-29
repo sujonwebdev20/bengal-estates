@@ -15,11 +15,15 @@ const DropDownMenu = () => {
           <li>
             <NavLink to="/why_bengal_estates">why bengal estates</NavLink>
           </li>
+          <li>
+            <NavLink to="/partnership">Partnership</NavLink>
+          </li>
         </div>
         <div className="flex flex-col gap-5">
           <li>
             <NavLink to="/value">value</NavLink>
           </li>
+
           <li>
             <NavLink to="/investment">investment</NavLink>
           </li>

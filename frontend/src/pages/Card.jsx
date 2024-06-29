@@ -75,7 +75,7 @@ export const BigRectangleCard = ({ header, paragraph }) => {
   return (
     <div
       ref={bigRectangleCard}
-      className="w-1/2 bg-medium_dark_purple max-sm:flex-grow px-14 py-14 rounded-lg"
+      className="w-full bg-medium_dark_purple max-sm:flex-grow px-9 py-9 rounded-lg"
     >
       <h3 className="font-lato text-4xl mb-6">{header}</h3>
       <p className="font-inter text-base">{paragraph}</p>

@@ -57,14 +57,14 @@ const Navbar = () => {
     <>
       <header
         ref={headerRef}
-        className=" navbar_container w-full px-0 max-[1180px]:px-4 z-[50] bg-dark_purple"
+        className="navbar_container w-full px-0 max-[1180px]:px-4 z-[50] bg-dark_purple"
       >
         <div className="max-w-6xl mx-auto flex justify-between items-center overflow-hidden py-4">
           <Link to="/">
             <img
               onClick={scrollToTop}
               className="w-24"
-              src="/images/logo2.svg"
+              src="/images/logo.svg"
               alt="Brand"
             />
           </Link>

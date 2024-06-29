@@ -65,7 +65,7 @@ export const createProperty = async (req, res, next) => {
  ******************************/
 export const getAllProperties = async (req, res, next) => {
   try {
-    const properties = await Property.find();
+    const properties = await Property.find().sort({ createdAt: -1 }).exec();
     return res.status(200).json(properties);
   } catch (error) {
     next(error);
@@ -139,74 +139,6 @@ export const deletePropertyById = async (req, res, next) => {
     next(error);
   }
 };
-//   const { id } = req.params;
-//   console.log(id);
-//   const reqBodyProperty = req.body;
-//   const files = req.files;
-//   console.log("body", reqBodyProperty);
-//   console.log(files);
-//   try {
-//     const existingProperty = await Property.findById(id);
-//     // Uploading files to cloudinary
-//     const imageUploadPromises = files.map(async (file) => {
-//       const uploadedResult = await cloudinary.uploader.upload(file.path, {
-//         folder: "bengal-estates",
-//       });
-//       fs.unlink(file.path, (err) => {
-//         if (err) {
-//           next(err);
-//         }
-//       });
-//       if (uploadedResult.secure_url) {
-//         // Deleting the existing image from cloudinary
-//         const imageDeletePromises = existingProperty.images.map(
-//           async (image) => {
-//             const splitedImageArray = image.split("/");
-//             const imageName =
-//               splitedImageArray[splitedImageArray.length - 1].split(".")[0];
-
-//             try {
-//               const result = await cloudinary.uploader.destroy(
-//                 `bengal-estates/${imageName}`
-//               );
-//               return result;
-//             } catch (err) {
-//               next(err);
-//             }
-//           }
-//         );
-//         await Promise.all(imageDeletePromises);
-//       } else {
-//         return res
-//           .status(500)
-//           .json({ message: "Something went wrong. Please try again" });
-//       }
-//       return uploadedResult.secure_url;
-//     });
-//     reqBodyProperty.images = await Promise.all(imageUploadPromises);
-
-//     if (reqBodyProperty.features) {
-//       reqBodyProperty.features = JSON.parse(reqBodyProperty.features);
-//     }
-//     // Updating data in database
-//     const updatedProperty = await Property.findByIdAndUpdate(
-//       id,
-//       reqBodyProperty,
-//       { new: true }
-//     );
-
-//     if (!updatedProperty) {
-//       return res.status(404).json({ message: "Property not found" });
-//     }
-
-//     return res.status(201).json({
-//       message: "Property updated successfully",
-//       property: updatedProperty,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// };
 
 /*******************************
  * EDIT PROPERTY BY ID HANDLER *
