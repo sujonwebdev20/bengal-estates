@@ -10,7 +10,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setUserInfo: (state, action) => {
-      console.log("action inside slice", action);
       return {
         message: action.payload.message,
         token: action.payload.token,

@@ -8,7 +8,6 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
 const Profile = () => {
-  console.log("Profile page loaded");
   const favoriteCardAnim = useRef();
 
   useGSAP(() => {

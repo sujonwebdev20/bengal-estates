@@ -26,8 +26,6 @@ const EnquiryMessageController = () => {
   }, [data]);
 
   const deleteEnquiryMessage = async (e, id) => {
-    console.log(id);
-
     e.stopPropagation();
 
     try {
@@ -77,7 +75,7 @@ const EnquiryMessageController = () => {
             ) : (
               <tr>
                 <td className="text-center text-4xl col-span-5">
-                  Property not found
+                  Enquiry not found
                 </td>
               </tr>
             )}

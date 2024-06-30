@@ -8,9 +8,6 @@ import Container from "../components/Container";
 const Favorite = () => {
   const { data, isLoading, refetch } = useGetAllFavoritesQuery();
   const [favoriteDataState, setFavoriteDataState] = useState();
-  // console.log(favoriteDataState);
-  // console.log(favoriteDataState);
-  // console.log(data?.favorites);
 
   useEffect(() => {
     if (data) {

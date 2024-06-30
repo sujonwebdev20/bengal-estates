@@ -9,7 +9,6 @@ const propertySlice = createSlice({
   initialState,
   reducers: {
     setPropertyData: (state, action) => {
-      console.log("action inside slice", action);
       return {
         propertyData: action.payload,
       };

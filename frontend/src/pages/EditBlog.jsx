@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 const EditBlog = () => {
   const { id } = useParams();
   const { data: blogData } = useGetBlogByIdQuery(id);
-  console.log(blogData);
+
   const [editBlogByIdMutation, { isLoading }] = useEditBlogByIdMutation();
 
   const [blogState, setBlogState] = useState({
@@ -31,17 +31,16 @@ const EditBlog = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(blogState);
+
     try {
       const formData = new FormData();
       formData.append("title", blogState.title);
       formData.append("image", blogState.image);
       formData.append("description", blogState.description);
-      const response = await editBlogByIdMutation({
+      await editBlogByIdMutation({
         id,
         data: formData,
       }).unwrap();
-      console.log("Upload response:", response);
     } catch (error) {
       console.error("Error uploading files", error);
     }

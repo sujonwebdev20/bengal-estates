@@ -17,12 +17,6 @@ export const contactApi = createApi({
     getAllContact: builder.query({
       query: () => "/admin/contact_messages",
     }),
-    deleteEnquiryMessageById: builder.mutation({
-      query: (id) => ({
-        url: `/admin/enquiry_messages/delete/${id}`,
-        method: "DELETE",
-      }),
-    }),
   }),
 });
 

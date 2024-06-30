@@ -1,17 +1,13 @@
 import { useEffect, useState } from "react";
 import Container from "../components/Container";
-import { toast } from "react-toastify";
 import { useGetAllContactQuery } from "../redux/features/contactApi";
 import Modal from "../components/Modal";
 import TableRowOfContactMessage from "../components/TableRowOfContactMessage";
 
 const ContactMessageController = () => {
   const { data, refetch } = useGetAllContactQuery();
-  console.log(data);
 
   const [contactMessagesState, setContactMessagesState] = useState([]);
-  // const [deleteEnquiryMessageByIdMutation] =
-  //   useDeleteEnquiryMessageByIdMutation();
 
   const [isShow, setIsShow] = useState(false);
   const [selectedMessage, setSelectedMessage] = useState(null);
@@ -24,8 +20,6 @@ const ContactMessageController = () => {
   }, [data]);
 
   const deleteContactMessage = async (e, id) => {
-    console.log(id);
-
     e.stopPropagation();
 
     // try {
@@ -74,7 +68,7 @@ const ContactMessageController = () => {
             ) : (
               <tr>
                 <td className="text-center text-4xl col-span-5">
-                  Property not found
+                  Contact message not found
                 </td>
               </tr>
             )}

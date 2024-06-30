@@ -18,7 +18,7 @@ const GeneralEnquiry = () => {
     e.preventDefault();
     try {
       const response = await generalEnquiryMutation(enquiryFormOfUser).unwrap();
-      console.log(response.message);
+
       if (response.success) {
         setEnquiryFormOfUser({
           name: "",
@@ -31,7 +31,6 @@ const GeneralEnquiry = () => {
       } else {
         toast.error(response.message);
       }
-      console.log(response);
     } catch (error) {
       if (error.status === 400) {
         toast.error(error.data.message);

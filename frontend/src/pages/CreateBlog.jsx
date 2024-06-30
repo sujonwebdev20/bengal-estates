@@ -15,7 +15,6 @@ const CreateBlog = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(blogState);
 
     try {
       const formData = new FormData();
@@ -24,7 +23,6 @@ const CreateBlog = () => {
       formData.append("description", blogState.description);
 
       const response = await createNewBlogMutation(formData).unwrap();
-      console.log("Upload response:", response);
 
       if (response.success) {
         toast.success(response.message);

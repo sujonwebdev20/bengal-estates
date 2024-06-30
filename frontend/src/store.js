@@ -15,6 +15,7 @@ const persistConfig = {
     propertyApi.reducerPath,
     blogApi.reducerPath,
     generalEnquiry.reducerPath,
+    contactApi.reducerPath,
   ],
 };
 

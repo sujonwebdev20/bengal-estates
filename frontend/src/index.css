@@ -62,23 +62,7 @@ small {
 
 body {
   background-color: #01002f;
-
-  /* background: rgb(29, 10, 80);
-  background: linear-gradient(
-    143deg,
-    rgba(29, 10, 80, 1) 0%,
-    rgba(48, 29, 102, 1) 1%,
-    rgba(22, 4, 73, 1) 33%,
-    rgba(27, 14, 65, 1) 74%,
-    rgba(53, 28, 96, 1) 97%,
-    rgba(51, 18, 108, 1) 100%,
-    rgba(48, 24, 71, 1) 100%
-  ); */
-
-  /* color: #311d63; */
-
   background-position: center;
-  /* background-repeat: no-repeat; */
   background-size: cover;
   color: white;
   width: 100%;

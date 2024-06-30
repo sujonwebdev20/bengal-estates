@@ -1,7 +1,8 @@
 .team__scroller {
   display: flex;
   gap: 0.9rem;
-  width: max-content;
+  max-width: 1920px;
+  margin: 0 auto;
   flex-wrap: nowrap;
   animation: scroll 70s linear infinite;
   -webkit-animation: scroll 70s linear infinite;

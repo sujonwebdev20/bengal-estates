@@ -69,8 +69,7 @@ const CreateProperty = () => {
       formData.append("isAvailable", newPropertyData.isAvailable);
 
       const response = await newPropertyMutation(formData).unwrap();
-      console.log(response);
-      console.log("Upload response:", response);
+
       if (response.success) {
         toast.success(response.message);
         setNewPropertyData({

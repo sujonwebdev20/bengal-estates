@@ -33,8 +33,6 @@ const EditProperty = () => {
     features: [],
   });
 
-  console.log(propertyData);
-
   useEffect(() => {
     if (propertyData) {
       setNewPropertyData({
@@ -101,7 +99,7 @@ const EditProperty = () => {
         id,
         data: formData,
       }).unwrap();
-      console.log(response);
+
       if (response.success) {
         toast.success(response.message);
       }

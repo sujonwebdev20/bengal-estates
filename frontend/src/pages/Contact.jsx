@@ -13,11 +13,9 @@ const Contact = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(contactFormOfUser);
 
     try {
       const response = await contactMutation(contactFormOfUser).unwrap();
-      console.log(response.message);
       if (response.success) {
         setContactFormOfUser({
           name: "",
@@ -28,7 +26,6 @@ const Contact = () => {
       } else {
         toast.error(response.message);
       }
-      console.log(response);
     } catch (error) {
       if (error.status === 400) {
         toast.error(error.data.message);

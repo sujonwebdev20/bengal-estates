@@ -23,7 +23,7 @@ const MobileNavbar = () => {
 
   const signoutHandle = async () => {
     const response = await signoutMutation();
-    console.log(response);
+
     if (response.data.success) {
       toast.success(response.data.message);
     }

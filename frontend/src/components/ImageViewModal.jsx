@@ -4,10 +4,7 @@ import PropTypes from "prop-types";
 
 const ImageViewModal = ({ isShow, setIsShow, images, thumbnail }) => {
   const allImages = [...images];
-  // console.log(thumbnail);
   allImages.unshift(thumbnail);
-
-  // console.log(allImages);
 
   if (isShow === true) {
     document.body.style.overflowY = "hidden";
