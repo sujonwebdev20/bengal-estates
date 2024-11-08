@@ -58,7 +58,7 @@ const PropertyCard = ({ dataItems }) => {
               </small>
             </div>
             <h3 className="font-lato text-xl font-bold">
-              {dataItems?.name?.length > 50
+              {dataItems?.name?.length > 30
                 ? dataItems?.name.slice(1, 30) + "..."
                 : dataItems?.name}
             </h3>
