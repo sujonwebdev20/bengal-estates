@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const navigationArray = [
   { label: "overview", path: "/overview", group: 1 },
   { label: "challenge", path: "/challenge", group: 1 },
-  { label: "why bengal estates", path: "/why_bengal_estates", group: 1 },
+  { label: "why bengal estates", path: "/why-bengal-estates", group: 1 },
   { label: "partnership", path: "/partnership", group: 1 },
   { label: "value", path: "/value", group: 2 },
   { label: "investment", path: "/investment", group: 2 },
