@@ -1,0 +1,47 @@
+@media (min-width: 1024px) {
+  .inner_nav li a {
+    position: relative;
+    padding-top: 4px;
+  }
+  .inner_nav li a.active::after {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    width: 100%;
+    height: 3px;
+    background-color: #b469ff;
+    border-radius: 1px;
+    margin-top: 3px;
+    transition: width 0.2s ease-in;
+  }
+  .inner_nav li a::after {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    width: 0%;
+    height: 3px;
+    background-color: #b469ff;
+    border-radius: 1px;
+    margin-top: 3px;
+    transition: width 0.2s ease-in;
+  }
+  .inner_nav li a:hover::after {
+    width: 100%;
+  }
+}
+
+.drop_down_menu {
+  visibility: hidden;
+  opacity: 0;
+  transform: perspective(200px) rotateY(90deg);
+  transition: all 0.2s ease-in;
+}
+
+.drop_down:hover .drop_down_menu {
+  z-index: 100;
+  visibility: visible;
+  opacity: 1;
+  transform: rotateX(0deg);
+}

@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lato:wght@100;300;400;700;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+  .details-marker-none::marker {
+    display: none;
+  }
+  .details-marker-none summary::-webkit-details-marker {
+    display: none;
+  }
+}
+@layer components {
+  .file-upload {
+    @apply transition ease-in-out duration-300;
+    &:hover {
+      @apply bg-blue-500 text-white;
+    }
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar-thumb {
+  background: #b469ff;
+  --scrollbar-width-legacy: 0.5rem;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar {
+  scrollbar-width: thin;
+}
+
+h1,
+h3,
+h3,
+h4,
+h5,
+h6,
+button,
+select {
+  font-family: "Lato", "sans-serif";
+}
+
+div,
+span,
+p,
+li,
+input,
+option,
+small {
+  font-family: "Inter", "sans-serif";
+}
+
+body {
+  background-color: #01002f;
+  background-position: center;
+  background-size: cover;
+  color: white;
+  width: 100%;
+  min-height: 100vh;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Scrollbar customization */
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #b469ff;
+}
+
+.scrollbar {
+  --scrollbar-color-thumb: #b469ff;
+  --scrollbar-color-track: transparent;
+  --scrollbar-width: thin;
+  --scrollbar-width-legacy: 0.5rem;
+}
+
+@supports (scrollbar-width: auto) {
+  .scrollbar {
+    scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
+    scrollbar-width: var(--scrollbar-width);
+  }
+}
+
+@supports selector(
+  ::-webkit-scrollbar,
+  ::-moz-scrollbar,
+  ::-o-scrollbar,
+
+) {
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-color-thumb);
+  }
+  .scrollbar::-webkit-scrollbar-track {
+    background: var(--scrollbar-color-track);
+  }
+  .scrollbar::-webkit-scrollbar {
+    max-width: var(--scrollbar-width-legacy);
+    max-height: var(--scrollbar-width-legacy);
+  }
+}
+
+.details_page_slider .mySwiper {
+  height: 100%;
+}
+.details_page_slider .mySwiper .swiper-button-next:after {
+  color: #b469ff;
+}
+.details_page_slider .mySwiper .swiper-button-prev:after {
+  color: #b469ff;
+}
