@@ -25,13 +25,6 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// const httpSever = createServer(app);
-// const io = new Server(httpSever, {
-//   cors: {
-//     origin: ["http://localhost:5173"],
-//   },
-// });
-
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -42,23 +35,6 @@ app.use(
     origin: "http://localhost:5173",
   })
 );
-
-// // Socket.io connection handler
-// io.on("connection", (socket) => {
-//   console.log("A user connected: ", socket.id);
-
-//   // Listen for incoming messages from client
-//   socket.on("send_message", (data) => {
-//     console.log("Message received: ", data);
-//     // Broadcast the message to other users in the conversation
-//     io.emit("receive_message", data);
-//   });
-
-//   // Handle user disconnect
-//   socket.on("disconnect", () => {
-//     console.log("User disconnected: ", socket.id);
-//   });
-// });
 
 // Routes
 app.get("/", (req, res) => {
