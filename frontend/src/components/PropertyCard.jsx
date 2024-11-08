@@ -57,7 +57,11 @@ const PropertyCard = ({ dataItems }) => {
                 {dataItems?.isAvailable}
               </small>
             </div>
-            <h3 className="font-lato text-xl font-bold">{dataItems?.name}</h3>
+            <h3 className="font-lato text-xl font-bold">
+              {dataItems?.name?.length > 50
+                ? dataItems?.name.slice(1, 30) + "..."
+                : dataItems?.name}
+            </h3>
             <p className={`font-inter text-md  max-[320px]:text-sm`}>
               {dataItems?.location.slice(1, 30) + "..."}
             </p>
