@@ -32,8 +32,8 @@ const BlogCard = ({ dataItems }) => {
 
           <div className="m-4 text-md flex-grow">
             <h3 className="text-xl mb-3">
-              {dataItems?.title?.length > 50
-                ? dataItems?.title.slice(0, 50) + "..."
+              {dataItems?.title?.length > 30
+                ? dataItems?.title.slice(0, 30) + "..."
                 : dataItems?.title}
             </h3>
 
