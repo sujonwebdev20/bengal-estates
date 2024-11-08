@@ -2,6 +2,7 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ImageViewModal from "./ImageViewModal";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const DetailsPageImageSlider = ({ images, thumbnail }) => {
   const allImages = [...images];
@@ -18,6 +19,7 @@ const DetailsPageImageSlider = ({ images, thumbnail }) => {
   return (
     <>
       <Swiper
+        enabled={true}
         slidesPerView={1}
         spaceBetween={30}
         loop={true}
@@ -48,6 +50,11 @@ const DetailsPageImageSlider = ({ images, thumbnail }) => {
       />
     </>
   );
+};
+
+DetailsPageImageSlider.propTypes = {
+  images: PropTypes.array,
+  thumbnail: PropTypes.string,
 };
 
 export default DetailsPageImageSlider;

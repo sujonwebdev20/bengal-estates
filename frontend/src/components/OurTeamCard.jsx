@@ -1,5 +1,5 @@
 import { ourTeamData } from "../../data/ourTeamData";
-import Container from "./Container";
+import Container from "./shared/Container";
 import "../css/OurTeam.css";
 
 const OurTeamCard = () => {

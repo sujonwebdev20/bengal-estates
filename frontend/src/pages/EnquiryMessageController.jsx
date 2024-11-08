@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Container from "../components/Container";
+import Container from "../components/shared/Container";
 import {
   useDeleteEnquiryMessageByIdMutation,
   useGetGeneralEnquiryQuery,

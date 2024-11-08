@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lato:wght@100;300;400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -19,24 +20,15 @@
     }
   }
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
-}
-::-webkit-scrollbar-thumb {
-  background: #b469ff;
-  --scrollbar-width-legacy: 0.5rem;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  background-clip: padding-box;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar {
-  scrollbar-width: thin;
 }
 
 h1,
@@ -46,18 +38,19 @@ h4,
 h5,
 h6,
 button,
+li,
 select {
-  font-family: "Lato", "sans-serif";
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
 }
 
 div,
 span,
 p,
-li,
 input,
 option,
 small {
-  font-family: "Inter", "sans-serif";
+  font-family: "Inter", sans-serif;
 }
 
 body {
@@ -75,41 +68,42 @@ body {
   height: 100vh;
 }
 
-/* Scrollbar customization */
-.scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: #b469ff;
+::selection {
+  background-color: #9333ea;
+  color: white;
 }
 
-.scrollbar {
-  --scrollbar-color-thumb: #b469ff;
-  --scrollbar-color-track: transparent;
-  --scrollbar-width: thin;
-  --scrollbar-width-legacy: 0.5rem;
+body {
+  /* --sb-track-color: #232e33; */
+  --sb-thumb-color: #b469ff;
+  --sb-size: 5px;
 }
 
-@supports (scrollbar-width: auto) {
-  .scrollbar {
-    scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
-    scrollbar-width: var(--scrollbar-width);
-  }
+::-webkit-scrollbar {
+  width: var(--sb-size);
 }
 
-@supports selector(
-  ::-webkit-scrollbar,
-  ::-moz-scrollbar,
-  ::-o-scrollbar,
+::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
 
-) {
-  .scrollbar::-webkit-scrollbar-thumb {
-    background: var(--scrollbar-color-thumb);
-  }
-  .scrollbar::-webkit-scrollbar-track {
-    background: var(--scrollbar-color-track);
-  }
-  .scrollbar::-webkit-scrollbar {
-    max-width: var(--scrollbar-width-legacy);
-    max-height: var(--scrollbar-width-legacy);
+::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
   }
 }
 
@@ -121,4 +115,74 @@ body {
 }
 .details_page_slider .mySwiper .swiper-button-prev:after {
   color: #b469ff;
+}
+.swiper-pagination-bullet-active {
+  background: #b469ff !important;
+}
+
+.pagination {
+  margin-bottom: 0 !important;
+}
+
+/* Arrow icon */
+.arrow_link {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.arrow_link:hover h3 {
+  color: #b469ff;
+  border-color: #b469ff;
+}
+
+.arrow_link .arrow {
+  width: 20%;
+
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.arrow_link:hover .arrow {
+  width: 50%;
+}
+
+.arrow {
+  margin-top: 1em;
+  margin-right: 2em;
+  border: 1px solid #b469ff;
+  position: relative;
+  background-color: #b469ff;
+}
+
+.arrow .head,
+.arrow .head:after {
+  border: 2.5px solid #b469ff;
+  border-radius: 2px;
+  width: 18px;
+  background-color: #b469ff;
+  position: absolute;
+  right: -5px;
+  top: 3px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+}
+
+.arrow .head:after {
+  content: "";
+  border-color: #b469ff;
+  right: -9px;
+  top: -9px;
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+}
+
+.slide img {
+  height: 100%;
+  object-fit: cover;
 }

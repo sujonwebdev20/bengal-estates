@@ -22,8 +22,13 @@ const ImageViewModal = ({ isShow, setIsShow, images, thumbnail }) => {
           }}
           className="fixed z-[99] top-0 left-0 right-0 bottom-0"
         ></div>
-        <div className="fixed z-[99] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  lg:w-[60%] md:h-[40rem] max-lg:w-full max-lg:h-[20rem]">
+        <div className="fixed z-[99] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  lg:w-[80%] md:h-[40rem] w-full h-[40rem]">
           <Swiper
+            keyboard={{
+              enabled: false,
+              onlyInViewport: true,
+              pageUpDown: true,
+            }}
             navigation={true}
             loop={true}
             modules={[Navigation]}
@@ -54,6 +59,7 @@ ImageViewModal.propTypes = {
   isShow: PropTypes.bool.isRequired,
   setIsShow: PropTypes.func.isRequired,
   images: PropTypes.array.isRequired,
+  thumbnail: PropTypes.string.isRequired,
 };
 
 export default ImageViewModal;

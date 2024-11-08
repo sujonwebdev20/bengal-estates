@@ -1,4 +1,4 @@
-import Container from "../components/Container";
+import Container from "../components/shared/Container";
 import { BigRectangleCard } from "./Card";
 
 const Partnership = () => {

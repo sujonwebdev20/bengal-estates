@@ -1,4 +1,5 @@
 import express from "express";
+import multer from "multer";
 import {
   addToFavoriteById,
   createProperty,
@@ -7,12 +8,12 @@ import {
   getAllFavorites,
   getAllProperties,
   getPropertyById,
+  getSuggestedProperties,
 } from "../controllers/propertyController.js";
 import {
   isAuthorizedUser,
   verifyUserToken,
 } from "../middlewares/authMiddleware.js";
-import multer from "multer";
 
 const router = express.Router();
 
@@ -29,6 +30,15 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage: storage,
   limits: { fileSize: 100 * 1024 * 1024 }, // File size limit 100mb
+  fileFilter: function (req, res, next) {
+    if (["image/jpeg", "image/png", "image/jpg"].includes(res.mimetype)) {
+      next(null, true);
+    } else {
+      next(
+        new Error("Invalid file type. Only JPEG, PNG, and JPG are allowed.")
+      );
+    }
+  },
 });
 
 router
@@ -39,15 +49,16 @@ router
     upload.fields([{ name: "thumbnail", maxCount: 1 }, { name: "images" }]),
     createProperty
   );
-router.route("/property/all").get(getAllProperties);
-router.route("/property/:id").get(getPropertyById);
+router.route("/properties").get(getAllProperties);
+router.route("/suggested-properties").get(getSuggestedProperties);
+router.route("/properties/:id").get(getPropertyById);
 router.route("/property/favorite/:id").post(verifyUserToken, addToFavoriteById);
 router.route("/property/favorites/all").get(verifyUserToken, getAllFavorites);
 router
-  .route("/admin/property/delete/:id")
+  .route("/admin/properties/:id")
   .delete(verifyUserToken, isAuthorizedUser, deletePropertyById);
 router
-  .route("/admin/property/edit/:id")
+  .route("/admin/properties/:id")
   .put(
     verifyUserToken,
     isAuthorizedUser,

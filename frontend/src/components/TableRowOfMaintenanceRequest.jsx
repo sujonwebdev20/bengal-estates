@@ -1,5 +1,6 @@
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import PropTypes from "prop-types";
+import TableCell from "./shared/TableCell";
 
 const TableRowOfMaintenanceRequest = ({
   requestMassage,
@@ -11,22 +12,12 @@ const TableRowOfMaintenanceRequest = ({
       onClick={() => handleRowClick(requestMassage)}
       className="grid grid-cols-6 h-[3rem] place-items-center border-b border-light_purple hover:bg-dark_purple cursor-pointer"
     >
-      <td className="flex items-center text-center h-full">
-        {requestMassage.createdAt.slice(0, 10)}
-      </td>
-      <td className="flex items-center text-center h-full">
-        #{requestMassage.tokenId}
-      </td>
-      <td className="flex items-center text-center h-full">
-        {requestMassage.email}
-      </td>
-      <td className="flex items-center text-center h-full">
-        {requestMassage.address.slice(0, 10)}
-      </td>
-      <td className="flex items-center text-center h-full">
-        {requestMassage.phone}
-      </td>
-      <td className="flex items-center text-center h-full">
+      <TableCell>{requestMassage.createdAt.slice(0, 10)}</TableCell>
+      <TableCell>#{requestMassage.tokenId}</TableCell>
+      <TableCell>{requestMassage.email}</TableCell>
+      <TableCell>{requestMassage.address.slice(0, 10)}</TableCell>
+      <TableCell>{requestMassage.phone}</TableCell>
+      <TableCell>
         <small
           onClick={(e) => {
             e.stopPropagation();
@@ -36,7 +27,7 @@ const TableRowOfMaintenanceRequest = ({
         >
           {requestMassage.actionType}
         </small>
-      </td>
+      </TableCell>
     </tr>
   );
 };

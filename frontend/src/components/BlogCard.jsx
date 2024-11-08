@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import ShowDate from "./shared/ShowDate";
 
-const BlogCard = ({ blogData }) => {
+const BlogCard = ({ dataItems }) => {
+  console.log(dataItems);
+
   const blogCardAnim = useRef();
   useGSAP(() => {
     gsap.fromTo(
@@ -21,29 +24,23 @@ const BlogCard = ({ blogData }) => {
 
   return (
     <div ref={blogCardAnim} className="blogCardAnim relative">
-      <Link to={`/blog/${blogData._id}`}>
-        <div className="w-full h-[18rem] bg-dark_trans_purple border-2 border-dark_purple rounded-lg hover:border-light_purple hover:scale-105 transition-all overflow-hidden">
+      <Link to={`/blogs/${dataItems?._id}`}>
+        <div className="w-full h-[18rem] flex flex-col bg-dark_trans_purple border-2 border-dark_purple rounded-lg hover:border-light_purple hover:scale-105 transition-all overflow-hidden">
           <img
             className="w-full h-[60%] object-cover"
-            src={blogData.image}
+            src={dataItems?.image}
             alt="House"
           />
 
-          <div className="m-4 text-md">
+          <div className="m-4 text-md flex-grow">
             <h3 className="text-xl mb-3">
-              {blogData?.title?.length > 50
-                ? blogData?.title.slice(0, 50) + "..."
-                : blogData?.title}
+              {dataItems?.title?.length > 50
+                ? dataItems?.title.slice(0, 50) + "..."
+                : dataItems?.title}
             </h3>
 
-            <div className="w-full flex justify-between items-center absolute left-0 bottom-2 ">
-              <small className="bg-inp_purple rounded-sm px-2 ml-4">
-                {blogData.createdAt.slice(0, 10)}
-              </small>
-              {/* <small className="bg-inp_purple rounded-sm px-2 py-[0.1rem] flex items-center gap-1 mr-4">
-                <AiOutlineLike className="text-lg" />
-                {blogData.likes}
-              </small> */}
+            <div className="w-full flex justify-end gap-2 mt-7 ">
+              <ShowDate date={dataItems?.createdAt} className="" />
             </div>
           </div>
         </div>
@@ -52,7 +49,7 @@ const BlogCard = ({ blogData }) => {
   );
 };
 BlogCard.propTypes = {
-  blogData: PropTypes.object.isRequired,
+  dataItems: PropTypes.object.isRequired,
 };
 
 export default BlogCard;

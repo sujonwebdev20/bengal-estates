@@ -1,4 +1,4 @@
-import Container from "./Container";
+import Container from "./shared/Container";
 import PropTypes from "prop-types";
 
 const BannerTop = ({

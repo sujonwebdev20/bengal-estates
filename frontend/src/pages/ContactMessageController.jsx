@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Container from "../components/Container";
+import Container from "../components/shared/Container";
 import { useGetAllContactQuery } from "../redux/features/contactApi";
 import Modal from "../components/Modal";
 import TableRowOfContactMessage from "../components/TableRowOfContactMessage";

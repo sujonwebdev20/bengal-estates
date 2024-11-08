@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import Container from "./Container";
+import Container from "./shared/Container";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);

@@ -9,29 +9,41 @@ export const maintenanceRequestApi = createApi({
   endpoints: (builder) => ({
     maintenanceRequest: builder.mutation({
       query: (data) => ({
-        url: "/maintenance_request",
+        url: "/maintenance-requests",
         method: "POST",
         body: data,
       }),
     }),
-    getMaintenanceRequestMessages: builder.query({
-      query: () => "/admin/maintenance_request/all",
+    getMaintenanceRequestMessagesAll: builder.query({
+      query: () => "/admin/maintenance-requests",
     }),
     getMaintenanceRequestMessagesOfUser: builder.query({
-      query: () => "/maintenance_request/all",
+      query: () => "/maintenance-requests",
     }),
     actionTypeChangeById: builder.mutation({
       query: (id) => ({
-        url: `/admin/action_change/${id}`,
+        url: `/admin/action-change/${id}`,
         method: "PUT",
       }),
+    }),
+    conversationOfRequest: builder.mutation({
+      query: ({ conversationId, data }) => ({
+        url: `/maintenance-requests/message?conversationId=${conversationId}`,
+        method: "POST",
+        body: data,
+      }),
+    }),
+    getSpecificChat: builder.query({
+      query: (id) => `/maintenance-requests/${id}`,
     }),
   }),
 });
 
 export const {
   useMaintenanceRequestMutation,
-  useGetMaintenanceRequestMessagesQuery,
+  useGetMaintenanceRequestMessagesAllQuery,
   useActionTypeChangeByIdMutation,
   useGetMaintenanceRequestMessagesOfUserQuery,
+  useConversationOfRequestMutation,
+  useGetSpecificChatQuery,
 } = maintenanceRequestApi;

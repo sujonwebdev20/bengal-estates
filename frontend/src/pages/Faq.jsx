@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
-import Container from "../components/Container";
+import Container from "../components/shared/Container";
 
 const Faq = () => {
   const accordingContent = [

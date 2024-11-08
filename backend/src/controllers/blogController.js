@@ -46,7 +46,7 @@ export const createBlog = async (req, res, next) => {
 export const getAllBlogs = async (req, res) => {
   try {
     const allBlogs = await Blog.find().sort({ createdAt: -1 }).exec();
-    return res.status(200).json(allBlogs);
+    return res.status(200).json({ success: true, data: allBlogs });
   } catch (error) {
     next(error);
   }
@@ -59,7 +59,7 @@ export const getBlogById = async (req, res, next) => {
   const { id } = req.params;
   try {
     const blog = await Blog.findById(id);
-    return res.status(200).json(blog);
+    return res.status(200).json({ success: true, data: blog });
   } catch (error) {
     next(error);
   }
@@ -74,7 +74,9 @@ export const deleteBlogById = async (req, res, next) => {
   try {
     const blog = await Blog.findById(id);
     if (!blog) {
-      return res.status(404).json({ message: "Blog not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Blog not found" });
     }
 
     const blogImage = blog.image;
@@ -90,11 +92,14 @@ export const deleteBlogById = async (req, res, next) => {
     if (deletedImageResult.result === "ok") {
       // Deleting the property from the database
       await Blog.findByIdAndDelete(id);
-      return res.status(200).json({ message: "Blog deleted successfully" });
-    } else {
       return res
-        .status(500)
-        .json({ message: "Something wen't wrong. Please try again" });
+        .status(200)
+        .json({ success: true, message: "Blog deleted successfully" });
+    } else {
+      return res.status(500).json({
+        success: false,
+        message: "Something wen't wrong. Please try again",
+      });
     }
   } catch (error) {
     next(error);
@@ -112,7 +117,9 @@ export const editBlogById = async (req, res, next) => {
   try {
     const existingBlog = await Blog.findById(id);
     if (!existingBlog) {
-      return res.status(404).json({ message: "Blog not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Blog not found" });
     }
 
     if (reqFile) {

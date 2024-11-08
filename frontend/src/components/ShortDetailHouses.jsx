@@ -1,4 +1,4 @@
-import Container from "./Container";
+import Container from "./shared/Container";
 import PropTypes from "prop-types";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -32,7 +32,7 @@ const ShortDetailHouses = ({ contents }) => {
     <Container>
       <section
         ref={imgAnim}
-        style={{ flexDirection: contents?.direction }}
+        style={{ flexDirection: contents?.direction || "" }}
         className="lg:flex lg:justify-between lg:items-center lg:gap-10 max-lg:gap-y-8 w-full mb-20 overflow-hidden"
       >
         <div className="short_details_img w-1/2 max-lg:w-full h-[23rem] max-lg:h-[40vw] max-lg:mb-4">

@@ -9,17 +9,17 @@ export const generalEnquiry = createApi({
   endpoints: (builder) => ({
     generalEnquiry: builder.mutation({
       query: (data) => ({
-        url: "/general_enquiry",
+        url: "/general-enquiry",
         method: "POST",
         body: data,
       }),
     }),
     getGeneralEnquiry: builder.query({
-      query: () => "/admin/enquiry_messages",
+      query: () => "/admin/enquiry-messages",
     }),
     deleteEnquiryMessageById: builder.mutation({
       query: (id) => ({
-        url: `/admin/enquiry_messages/delete/${id}`,
+        url: `/admin/enquiry-messages/${id}`,
         method: "DELETE",
       }),
     }),

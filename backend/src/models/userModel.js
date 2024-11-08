@@ -58,6 +58,7 @@ const userSchema = new Schema({
   maintenanceRequestMessages: [
     { type: Schema.Types.ObjectId, ref: "MaintenanceRequest" },
   ],
+  // conversation: [{ type: Schema.Types.ObjectId, ref: "Conversation" }],
 });
 
 userSchema.pre("save", function () {

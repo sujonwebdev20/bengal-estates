@@ -10,12 +10,12 @@ import {
 } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
-router.route("/general_enquiry").post(verifyUserToken, generalEnquiry);
+router.route("/general-enquiry").post(verifyUserToken, generalEnquiry);
 router
-  .route("/admin/enquiry_messages")
+  .route("/admin/enquiry-messages")
   .get(verifyUserToken, isAuthorizedUser, getGeneralEnquiry);
 router
-  .route("/admin/enquiry_messages/delete/:id")
+  .route("/admin/enquiry-messages/:id")
   .delete(verifyUserToken, isAuthorizedUser, deleteEnquiryMessageById);
 
 export default router;

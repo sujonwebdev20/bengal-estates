@@ -3,6 +3,8 @@ import Contact from "../models/contactModel.js";
 export const createContact = async (req, res, next) => {
   const reqBody = req.body;
 
+  console.log("contact body", req.body);
+
   const { name, email, message } = req.body;
 
   if (!name || !email || !message) {

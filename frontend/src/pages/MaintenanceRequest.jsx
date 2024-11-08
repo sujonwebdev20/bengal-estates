@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Container from "../components/Container";
-import Button from "../components/Button";
+import Container from "../components/shared/Container";
+import Button from "../components/shared/Button";
 import { useMaintenanceRequestMutation } from "../redux/features/maintenanceRequestApi";
 import { toast } from "react-toastify";
 

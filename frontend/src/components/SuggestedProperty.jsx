@@ -1,19 +1,11 @@
-import { useEffect, useState } from "react";
-import { useGetAllPropertiesQuery } from "../redux/features/propertyApi";
+import { useGetSuggestedPropertiesQuery } from "../redux/features/propertyApi";
 import PropertyCard from "./PropertyCard";
 import LoadingSpinner from "./LoadingSpinner";
-import Container from "./Container";
+import Container from "./shared/Container";
 
 const SuggestedProperty = () => {
-  const { data, isLoading, refetch } = useGetAllPropertiesQuery();
-  const [suggestPropertyState, setSuggestPropertyState] = useState([]);
-
-  useEffect(() => {
-    refetch();
-    if (data) {
-      setSuggestPropertyState(data);
-    }
-  }, [data]);
+  const { data, isLoading } = useGetSuggestedPropertiesQuery();
+  console.log(data);
 
   return (
     <Container>
@@ -24,14 +16,14 @@ const SuggestedProperty = () => {
           <LoadingSpinner />
         ) : (
           <div className="w-full">
-            {suggestPropertyState.length > 0 && (
+            {data?.data?.length > 0 && (
               <>
                 <h3 className="text-xl font-lato font-bold mb-3">
                   Similar Suggested
                 </h3>
                 <div className="grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-5 my-5">
-                  {suggestPropertyState.slice(0, 3).map((item) => (
-                    <PropertyCard key={item._id} propertyData={item} />
+                  {data?.data?.map((item) => (
+                    <PropertyCard key={item?._id} dataItems={item} />
                   ))}
                 </div>
               </>

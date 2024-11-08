@@ -15,7 +15,7 @@ export const contactApi = createApi({
       }),
     }),
     getAllContact: builder.query({
-      query: () => "/admin/contact_messages",
+      query: () => "/admin/contact-messages",
     }),
   }),
 });

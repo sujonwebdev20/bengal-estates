@@ -8,10 +8,13 @@ export const propertyApi = createApi({
   }),
   endpoints: (builder) => ({
     getAllProperties: builder.query({
-      query: () => "/property/all",
+      query: () => "/properties",
+    }),
+    getSuggestedProperties: builder.query({
+      query: () => "/suggested-properties",
     }),
     getPropertyById: builder.query({
-      query: (id) => `/property/${id}`,
+      query: (id) => `/properties/${id}`,
     }),
     getAllFavorites: builder.query({
       query: () => `/property/favorites/all`,
@@ -24,21 +27,21 @@ export const propertyApi = createApi({
     }),
     createNewProperty: builder.mutation({
       query: (data) => ({
-        url: "/admin/property/create",
+        url: "/admin/properties",
         method: "POST",
         body: data,
       }),
     }),
     editProperty: builder.mutation({
       query: ({ id, data }) => ({
-        url: `/admin/property/edit/${id}`,
+        url: `/admin/properties/${id}`,
         method: "PUT",
         body: data,
       }),
     }),
     deletePropertyById: builder.mutation({
       query: (id) => ({
-        url: `/admin/property/delete/${id}`,
+        url: `/admin/properties/${id}`,
         method: "DELETE",
       }),
     }),
@@ -47,6 +50,7 @@ export const propertyApi = createApi({
 
 export const {
   useGetAllPropertiesQuery,
+  useGetSuggestedPropertiesQuery,
   useGetPropertyByIdQuery,
   useCreateNewPropertyMutation,
   useDeletePropertyByIdMutation,

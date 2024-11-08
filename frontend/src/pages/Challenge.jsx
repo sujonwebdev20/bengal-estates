@@ -1,6 +1,6 @@
 import { challengeData } from "../../data/challengeData";
 import BannerTop from "../components/BannerTop";
-import Container from "../components/Container";
+import Container from "../components/shared/Container";
 import ShowCompDetailsInPage from "../components/ShowCompDetailsInPage";
 
 const Challenge = () => {

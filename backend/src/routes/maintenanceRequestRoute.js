@@ -9,19 +9,34 @@ import {
   isAuthorizedUser,
   verifyUserToken,
 } from "../middlewares/authMiddleware.js";
+import {
+  getMessage,
+  getSpecificMessagesOfMaintenanceRequestForUser,
+  sendMessage,
+} from "../controllers/messageController.js";
 
 const router = express.Router();
 
-router.route("/maintenance_request").post(verifyUserToken, maintenanceRequest);
+router.route("/maintenance-requests").post(verifyUserToken, maintenanceRequest);
 router
-  .route("/admin/maintenance_request/all")
+  .route("/admin/maintenance-requests")
   .get(verifyUserToken, isAuthorizedUser, getAllMaintenanceRequests);
 router
-  .route("/maintenance_request/all")
+  .route("/maintenance-requests")
   .get(verifyUserToken, getAllMaintenanceRequestsByUserId);
 
 router
-  .route("/admin/action_change/:id")
+  .route("/admin/action-change/:id")
   .put(verifyUserToken, isAuthorizedUser, updateMaintenanceRequestActionType);
+
+router
+  .route("/maintenance-requests/message")
+  .post(verifyUserToken, sendMessage);
+
+router
+  .route("/maintenance-requests/:id")
+  .get(verifyUserToken, getSpecificMessagesOfMaintenanceRequestForUser);
+
+router.route("/messages/:id").get(verifyUserToken, getMessage);
 
 export default router;

@@ -1,20 +1,11 @@
-import { useEffect, useState } from "react";
 import { useGetAllFavoritesQuery } from "../redux/features/propertyApi";
 import PropertyCard from "../components/PropertyCard";
 import LoadingSpinner from "../components/LoadingSpinner";
 import UnavailableData from "../components/UnavailableData";
-import Container from "../components/Container";
+import Container from "../components/shared/Container";
 
 const Favorite = () => {
-  const { data, isLoading, refetch } = useGetAllFavoritesQuery();
-  const [favoriteDataState, setFavoriteDataState] = useState();
-
-  useEffect(() => {
-    if (data) {
-      setFavoriteDataState(data.favorites);
-    }
-    refetch();
-  }, [data]);
+  const { data, isLoading } = useGetAllFavoritesQuery();
 
   return (
     <Container>
@@ -23,14 +14,13 @@ const Favorite = () => {
       >
         {isLoading ? (
           <LoadingSpinner />
-        ) : !data ? (
-          <UnavailableData subject={"Properties"} />
+        ) : data?.data < 1 ? (
+          <UnavailableData subject={"Favorite Properties"} />
         ) : (
           <div className="w-full grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-5 my-5">
-            {Array.isArray(favoriteDataState) &&
-              favoriteDataState.map((item) => (
-                <PropertyCard key={item._id} propertyData={item} />
-              ))}
+            {data?.data?.map((item) => (
+              <PropertyCard key={item?._id} dataItems={item} />
+            ))}
           </div>
         )}
       </section>

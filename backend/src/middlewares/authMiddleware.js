@@ -18,6 +18,7 @@ export const verifyUserToken = (req, res, next) => {
           .status(400)
           .json({ success: false, message: "Token is invalid" });
       }
+
       req.decodedToken = decoded;
       next();
     });

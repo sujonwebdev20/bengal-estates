@@ -309,7 +309,19 @@ export const getAllFavorites = async (req, res, next) => {
       return res.status(404).json({ message: "Favorites not found" });
     }
 
-    return res.status(200).json({ success: true, favorites });
+    return res.status(200).json({ success: true, data: favorites });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/****************************
+ * GET SUGGESTED PROPERTIES *
+ ****************************/
+export const getSuggestedProperties = async (req, res, next) => {
+  try {
+    const properties = await Property.find().limit(3);
+    return res.status(200).json({ success: true, data: properties });
   } catch (error) {
     next(error);
   }

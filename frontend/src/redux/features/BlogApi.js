@@ -8,28 +8,28 @@ export const blogApi = createApi({
   }),
   endpoints: (builder) => ({
     getAllBlogs: builder.query({
-      query: () => "/blog/all",
+      query: () => "/blogs",
     }),
     getBlogById: builder.query({
-      query: (id) => `/blog/${id}`,
+      query: (id) => `/blogs/${id}`,
     }),
     createNewBlog: builder.mutation({
       query: (data) => ({
-        url: "/admin/blog/create",
+        url: "/admin/blogs",
         method: "POST",
         body: data,
       }),
     }),
     editBlogById: builder.mutation({
       query: ({ id, data }) => ({
-        url: `/admin/blog/edit/${id}`,
+        url: `/admin/blogs/${id}`,
         method: "PUT",
         body: data,
       }),
     }),
     deleteBlogById: builder.mutation({
       query: (id) => ({
-        url: `/admin/blog/delete/${id}`,
+        url: `/admin/blogs/${id}`,
         method: "DELETE",
       }),
     }),

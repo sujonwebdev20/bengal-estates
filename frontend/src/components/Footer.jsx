@@ -1,4 +1,4 @@
-import Container from "./Container";
+import Container from "./shared/Container";
 import { TiSocialTwitter } from "react-icons/ti";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="w-full border-t-[3px] border-light_purple pb-2 mt-auto">
+    <footer className="w-full border-t border-light_purple pb-2 mt-auto">
       <Container>
         <div className="w-full flex max-md:flex-col lg:px-0 lg:gap-20 min-[320px]:gap-10 pt-3 pb-3 justify-between items-start max-md:items-center text-[#dadada] min-[320px]:px-5">
-          <div className=" flex-grow ">
+          <div className=" flex-grow">
             <div className="max-lg:flex justify-center mb-3 mt-5">
               <img className="w-24" src="/images/logo.webp" alt="Brand" />
             </div>

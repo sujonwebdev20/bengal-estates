@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.route("/contact").post(createContact);
 router
-  .route("/admin/contact_messages")
+  .route("/admin/contact-messages")
   .get(verifyUserToken, isAuthorizedUser, getAllContact);
 
 export default router;

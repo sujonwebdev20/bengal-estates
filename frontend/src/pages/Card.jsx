@@ -93,6 +93,6 @@ RectangleAllCardWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 };
 BigRectangleCard.propTypes = {
-  header: PropTypes.string.isRequired,
+  header: PropTypes.string,
   paragraph: PropTypes.string.isRequired,
 };

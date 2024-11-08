@@ -9,6 +9,7 @@ const maintenanceRequestSchema = new Schema({
   tokenId: { type: Number, default: 100001 },
   actionType: { type: String, enum: ["PENDING", "SOLVED"], default: "PENDING" },
   user: { type: Schema.Types.ObjectId, ref: "User" },
+  requestMessages: [{ type: Schema.Types.ObjectId, ref: "Message" }],
   createdAt: { type: Date, default: Date.now },
 });
 

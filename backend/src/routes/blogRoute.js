@@ -29,15 +29,15 @@ const upload = multer({
 });
 
 router
-  .route("/admin/blog/create")
+  .route("/admin/blogs")
   .post(verifyUserToken, isAuthorizedUser, upload.single("image"), createBlog);
 router
-  .route("/admin/blog/delete/:id")
+  .route("/admin/blogs/:id")
   .delete(verifyUserToken, isAuthorizedUser, deleteBlogById);
 router
-  .route("/admin/blog/edit/:id")
+  .route("/admin/blogs/:id")
   .put(verifyUserToken, isAuthorizedUser, upload.single("image"), editBlogById);
-router.route("/blog/all").get(getAllBlogs);
-router.route("/blog/:id").get(getBlogById);
+router.route("/blogs").get(getAllBlogs);
+router.route("/blogs/:id").get(getBlogById);
 
 export default router;

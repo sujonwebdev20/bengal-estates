@@ -11,16 +11,26 @@ import { v2 as cloudinary } from "cloudinary";
 import generalEnquiryRoute from "./src/routes/generalEnquiryRoute.js";
 import maintenanceRequestRoute from "./src/routes/maintenanceRequestRoute.js";
 import contactRoute from "./src/routes/contactRoute.js";
+import newsRoute from "./src/routes/newsRoute.js";
+import emailRoute from "./src/routes/emailRoute.js";
+import { app, server } from "./socketServer.js";
+// import messageRoute from "./src/routes/messageRoute.js";
 
 // Configuration
 dotenv.config();
-const app = express();
 // Cloudinary Configuration
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
+
+// const httpSever = createServer(app);
+// const io = new Server(httpSever, {
+//   cors: {
+//     origin: ["http://localhost:5173"],
+//   },
+// });
 
 // Middlewares
 app.use(express.json());
@@ -33,6 +43,23 @@ app.use(
   })
 );
 
+// // Socket.io connection handler
+// io.on("connection", (socket) => {
+//   console.log("A user connected: ", socket.id);
+
+//   // Listen for incoming messages from client
+//   socket.on("send_message", (data) => {
+//     console.log("Message received: ", data);
+//     // Broadcast the message to other users in the conversation
+//     io.emit("receive_message", data);
+//   });
+
+//   // Handle user disconnect
+//   socket.on("disconnect", () => {
+//     console.log("User disconnected: ", socket.id);
+//   });
+// });
+
 // Routes
 app.get("/", (req, res) => {
   res.json({ message: "Hello Bengal Estates" });
@@ -43,11 +70,14 @@ app.use("/api", blogRoute);
 app.use("/api", generalEnquiryRoute);
 app.use("/api", contactRoute);
 app.use("/api", maintenanceRequestRoute);
+app.use("/api", newsRoute);
+app.use("/api", emailRoute);
+// app.use("/api", messageRoute);
 
 // Error handler middleware
 app.use(errorHandler);
 
-app.listen(process.env.PORT, () => {
+server.listen(process.env.PORT, () => {
   console.log(`Server is running on port http://localhost:${process.env.PORT}`);
   connectDb();
 });

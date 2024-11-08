@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../components/Button";
+import Button from "../components/shared/Button";
 import { toast } from "react-toastify";
 import { useContactMutation } from "../redux/features/contactApi";
 

@@ -85,7 +85,6 @@ export const getAllMaintenanceRequestsByUserId = async (req, res, next) => {
 /**********************************************************
  * ACTIONTYPE PROPERTY VALUE CHANGE OF MAINTENANCE REQUEST *
  **********************************************************/
-
 export const updateMaintenanceRequestActionType = async (req, res, next) => {
   const authenticatedUserToken = req.decodedToken;
   const { id } = req.params;

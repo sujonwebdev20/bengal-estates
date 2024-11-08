@@ -18,7 +18,3 @@
   height: 100%;
   object-fit: cover;
 }
-
-.hero_slider .swiper-pagination-bullet-active {
-  background-color: #b469ff;
-}
