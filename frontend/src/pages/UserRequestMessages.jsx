@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Container from "../components/shared/Container";
 import Modal from "../components/Modal";
-import { toast } from "react-toastify";
 import { useGetMaintenanceRequestMessagesOfUserQuery } from "../redux/features/maintenanceRequestApi";
 import TableRowOfUserRequestMessages from "../components/TableRowOfUserRequestMessages";
 import ChatBox from "../components/ChatBox";
@@ -14,12 +13,8 @@ const UserRequestMessages = () => {
 
   const handleRowClick = (message) => {
     setSelectedMessage(message);
-    // console.log(message);
-
     setIsShow(true);
   };
-
-  // console.log(selectedMessage);
 
   return (
     <Container>

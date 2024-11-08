@@ -7,8 +7,6 @@ import { useRef } from "react";
 import ShowDate from "./shared/ShowDate";
 
 const BlogCard = ({ dataItems }) => {
-  console.log(dataItems);
-
   const blogCardAnim = useRef();
   useGSAP(() => {
     gsap.fromTo(

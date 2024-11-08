@@ -6,7 +6,6 @@ const NewsDetails = () => {
   const { id } = useParams();
 
   const { data, isLoading } = useGetNewsByIdQuery(id);
-  console.log(data);
 
   return (
     <>

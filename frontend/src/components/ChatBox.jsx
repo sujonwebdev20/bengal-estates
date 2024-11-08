@@ -27,8 +27,6 @@ const ChatBox = ({ conversationId }) => {
 
   // Socket.IO server connection
   useEffect(() => {
-    console.log(socketRef.current);
-
     if (getMessagesForUserQuery) {
       setMessages(getMessagesForUserQuery);
     }
@@ -63,8 +61,6 @@ const ChatBox = ({ conversationId }) => {
         conversationId,
         data: formOfChatMessage,
       }).unwrap();
-
-      console.log(response);
 
       const messageData = {
         conversationId,

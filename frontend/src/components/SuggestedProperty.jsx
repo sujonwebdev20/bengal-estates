@@ -5,7 +5,6 @@ import Container from "./shared/Container";
 
 const SuggestedProperty = () => {
   const { data, isLoading } = useGetSuggestedPropertiesQuery();
-  console.log(data);
 
   return (
     <Container>

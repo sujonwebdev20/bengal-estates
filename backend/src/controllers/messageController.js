@@ -21,10 +21,7 @@ export const sendMessage = async (req, res) => {
     const senderIsAdmin = await isAdminUser(senderId);
     const receiverIsAdmin = await isAdminUser(parsedAdminId);
 
-    console.log(senderId, parsedAdminId);
-
     const receiverId = parsedAdminId;
-    console.log(receiverId);
 
     // If user is normal then can send message to admin. No one else can.
     if (!senderIsAdmin && !receiverIsAdmin) {

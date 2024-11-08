@@ -12,8 +12,6 @@ const BlogsController = () => {
   const [deleteBlogByIdMutation] = useDeleteBlogByIdMutation();
   const [blogs, setBlogs] = useState([]);
 
-  console.log(blogs.data);
-
   useEffect(() => {
     if (data) {
       setBlogs(data);

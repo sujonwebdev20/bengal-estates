@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 import ShowDate from "./ShowDate";
 
 const DetailContentsOfPage = ({ data, isLoading }) => {
-  console.log(typeof data?.createdAt === "string");
-
   return (
     <>
       <main

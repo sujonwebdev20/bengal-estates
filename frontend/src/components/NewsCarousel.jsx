@@ -5,7 +5,6 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 const NewsCarousel = () => {
   const { data } = useGetAllNewsQuery();
-  console.log(data);
 
   return (
     <Container>
